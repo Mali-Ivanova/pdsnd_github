@@ -8,6 +8,7 @@ possible_day=("monday","tuesday","wednesday","thursday","friday","saturday","sun
 possible_files={"new york city":"new_york_city.csv","chicago":"chicago.csv","washington":"washington.csv"}
 line_count=1
 
+#In Selection section, user specifies the desired filters as input for the data analyisis. Based on the filters, different functions are initiated. 
 def city_selection():
 	city_input = input("Which city would you like to explore? New York City, Chicago or Washington?\n")
 	print ("You have selected: "+city_input+"\n")
