@@ -16,3 +16,7 @@ washington.csv
 ### Credits
 Udacity
 
+### City Data Included
+Chicago Bikesharing Data
+New York City Bikesharing Data
+Washington Bikesharing Data
