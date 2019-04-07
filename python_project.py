@@ -8,36 +8,37 @@ possible_day=("monday","tuesday","wednesday","thursday","friday","saturday","sun
 possible_files={"new york city":"new_york_city.csv","chicago":"chicago.csv","washington":"washington.csv"}
 line_count=1
 
-def city_check():
+#In Selection section, user specifies the desired filters as input for the data analyisis. Based on the filters, different functions are initiated. 
+def city_selection():
 	city_input = input("Which city would you like to explore? New York City, Chicago or Washington?\n")
 	print ("You have selected: "+city_input+"\n")
 	if city_input.lower() not in possible_city:
 		print("Double check your input")
-		city_check()
+		city_selection()
 	else: return city_input.lower()
 
-def filter_check():
+def filter_selection():
 	filter_input=input("Would you like to filter the data by month, day, both or none?\n")
 	print ("You have selected: "+filter_input+"\n")
 	if filter_input.lower() not in possible_filter:
 		print("Double check your input")
-		filter_check()
+		filter_selection()
 	else: return filter_input.lower()
 
-def month_check():
+def month_selection():
 	month_input=input("Which month would you like to explore? Please input name of the month e.g. January.\n")
 	print("You have selected: "+month_input+"\n")
 	if  month_input.lower() not in possible_month:
 		print("Double check your input")
-		month_check()
+		month_selection()
 	else: return month_input.lower()
 
-def day_check():
+def day_selection():
 	day_input=input("Which day would you like to explore? Please input name of the day e.g. Monday.\n")
 	print("You have selected: "+day_input+"\n")
 	if  day_input.lower() not in possible_day:
 		print("Double check your input")
-		day_check()
+		day_selection()
 	else: return day_input.lower()
 
 #Function returns the common day of the week by month
@@ -458,12 +459,12 @@ def years_of_birth():
 # Program Start
 
 print("Hello, welcome to BikeSharing data!")	
-u_city=city_check()
+u_city=city_selection()
 city_data=pd.read_csv(possible_files[u_city])
-u_filter=filter_check()
+u_filter=filter_selection()
 
 if u_filter=="month":
-	u_month=month_check()
+	u_month=month_selection()
 	print("The most common day of the week in month "+u_month+" is: "+get_most_common_day_of_the_week_by_month(u_month))
 	print("The most common hour in month "+u_month+" is: "+get_most_common_hour_by_month(u_month))
 	print("Most common start station: "+get_most_common_station(u_month,"Start"))
@@ -476,7 +477,7 @@ if u_filter=="month":
 
 elif u_filter=="day":
 	print("filter day")
-	u_day=day_check()
+	u_day=day_selection()
 	print("The most common hour is: "+get_most_common_hour_by_day(u_day))
 	print("Most common start station: "+get_most_common_station_by_day(u_day,"Start"))
 	print("Most common end station: "+get_most_common_station_by_day(u_day,"End"))
@@ -488,8 +489,8 @@ elif u_filter=="day":
 
 elif u_filter=="both":
 	print("filter both")
-	u_month=month_check()
-	u_day=day_check()
+	u_month=month_selection()
+	u_day=day_selection()
 	print("The most common hour for "+u_day+" in month "+u_month+" is: "+get_most_common_hour_by_day_and_month(u_day,u_month))	
 	print("The most common start station for "+u_day+" in month "+u_month+" is: "+get_most_common_station_by_day_and_month(u_day,u_month,"Start"))
 	print("The most common end station for "+u_day+" in month "+u_month+" is: "+get_most_common_station_by_day_and_month(u_day,u_month,"End"))
